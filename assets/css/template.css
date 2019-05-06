@@ -1,0 +1,54 @@
+body {
+    marin: 0px;
+}
+
+.topo {
+    height: 40px;
+    background-color: #555;
+    color: #fff;
+}
+
+.topoint {
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+}
+
+.topoleft {
+    width: 50%;
+    line-height: 40px;
+    float: left;
+}
+
+.toporight {
+    width: 50%;
+    line-height: 40px;
+    float: right;
+    text-align: right;
+}
+
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+}
+
+.feed {
+    width: 70%;
+    min-height: 300px;
+    float: left;
+}
+
+.rightside {
+    width: 30%;
+    min-height: 300px;
+    float: left;
+    background-color: #eee;
+}
+
+.rs_meio {
+    width: 50%;
+    height: 50px;
+    float: left;
+    text-align: center;
+}
