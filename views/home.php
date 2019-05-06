@@ -1,5 +1,19 @@
 <div class="feed">
-    Feeds...
+    
+    <form action="" method="post">
+
+        <textarea name="msg" class="textareapost"></textarea><br>
+        <input type="submit" value="Enviar">
+
+    </form>
+  
+    <?php foreach($feed as $item): ?>
+        <strong><?php echo $item['nome'];?></strong> - <?php echo date('H:i',strtotime($item['data_post']))?><br>
+        <?php echo $item['mensagem']; ?>
+        <hr>
+    <?php endforeach;?>
+
+    
 </div>
 <div class="rightside">
     <h4>Relacionamentos</h4>
@@ -18,7 +32,11 @@
         <tr>
             <td><?php echo $item['nome']?></td>
             <td>
-                <a href="">Seguir</a>
+                <?php if($item['seguido']=='0'):?>
+                <a href="/twitter/home/seguir/<?php echo $item['id'];?>">Follow</a>
+                <?php else:?>
+                <a href="/twitter/home/deseguir/<?php echo $item['id'];?>">Unfollow</a>
+                <?php endif;?>
             </td>
         </tr>
     <?php endforeach;?>

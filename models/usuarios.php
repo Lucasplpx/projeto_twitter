@@ -93,11 +93,30 @@ class usuarios extends model{
 
         $array = array();
 
-        $sql = "SELECT * FROM usuarios LIMIT $limite";
+        $sql = "SELECT          
+        *,
+        (select count(*) from relacionamentos where relacionamentos.id_seguidor = '".($this->uid)."' AND relacionamentos.id_seguido = usuarios.id ) as seguido
+        
+        FROM usuarios WHERE id != '".($this->uid)."' LIMIT $limite";
         $sql = $this->db->query($sql);
 
         if($sql->rowCount()){
             $array = $sql->fetchAll();
+        }
+
+        return $array;
+    }
+
+    public function getSeguidos(){
+        $array = array();
+        $sql = "SELECT id_seguido FROM relacionamentos WHERE id_seguidor = '".($this->uid)."'";
+        $sql = $this->db->query($sql);
+
+        if($sql->rowCount() > 0){
+            $dados = $sql->fetchAll();
+            foreach ($dados as $seg) {
+               $array[] = $seg['id_seguido'];
+            }
         }
 
         return $array;
